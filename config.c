@@ -457,7 +457,7 @@ void config_load(CONFIG *conf, int argc, char **argv) {
 	conf->server_socket = -1;
 	conf->write_output_network = 1;
 
-	while ((j = getopt(argc, argv, "i:b:p:g:c:n:e:d:t:o:O:P:l:L:B:m:qDHhEWN")) != -1) {
+	while ((j = getopt(argc, argv, "i:b:p:g:c:n:e:d:t:o:O:P:l:L:B:m:W:qDHhEN")) != -1) {
 		switch (j) {
 			case 'i':
 				conf->ident = strdup(optarg);
@@ -537,7 +537,7 @@ void config_load(CONFIG *conf, int argc, char **argv) {
 				break;
 			case 'W':
 				conf->write_output_file = 1;
-				output_open_file(conf->output);
+				output_open_file(optarg, conf->output);
 				break;
 			case 'E':
 				conf->write_input_file = 1;

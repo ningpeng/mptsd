@@ -286,8 +286,8 @@ OUTPUT *output_new() {
 	return o;
 }
 
-void output_open_file(OUTPUT *o) {
-	o->ofd = open("mptsd-output.ts", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+void output_open_file(char *filename, OUTPUT *o) {
+	o->ofd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 }
 
 void obuf_reset(OBUF *ob) {
