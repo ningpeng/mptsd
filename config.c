@@ -550,7 +550,7 @@ void config_load(CONFIG *conf, int argc, char **argv) {
 				break;
 			case 'H':
 			case 'h':
-				show_usage(0);
+				show_usage();
 				exit(0);
 				break;
 		}
