@@ -555,7 +555,7 @@ void config_load(CONFIG *conf, int argc, char **argv) {
 				break;
 		}
 	}
-	if (!conf->output->out_host.s_addr) {
+	if (conf->write_output_network && !conf->output->out_host.s_addr) {
 		fprintf(stderr, "ERROR: Output address is not set (use -O x.x.x.x)\n");
 		show_usage();
 		goto ERR;
@@ -584,7 +584,7 @@ void config_load(CONFIG *conf, int argc, char **argv) {
 	conf->output_bitrate         = conf->output_packets_per_sec * (1316 * 8);
 	conf->output_tmout           = 1000000 / conf->output_packets_per_sec;
 
-	if (conf->write_output_network && conf->server_port)
+	if (conf->server_port)
 		init_server_socket(conf->server_addr, conf->server_port, &conf->server, &conf->server_socket);
 
 	if (!conf->quiet) {
