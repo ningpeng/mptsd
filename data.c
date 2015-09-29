@@ -287,7 +287,12 @@ OUTPUT *output_new() {
 }
 
 void output_open_file(char *filename, OUTPUT *o) {
-	o->ofd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	int fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0660);
+	if (fd == -1) {
+		perror("Cannot open output file\n");
+		exit(1);
+	}
+	o->ofd = fd;
 }
 
 void obuf_reset(OBUF *ob) {
