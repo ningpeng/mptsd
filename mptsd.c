@@ -134,7 +134,7 @@ void signal_quit(int sig) {
 	keep_going = 0;
 }
 
-void init_signals() {
+void init_signals(void) {
 	signal(SIGCHLD, SIG_IGN);
 	signal(SIGPIPE, SIG_IGN);
 
